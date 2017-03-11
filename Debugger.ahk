@@ -8,7 +8,8 @@ MouseGetPos, MouseX, MouseY
 PixelGetColor, color, %MouseX%, %MouseY%
 MsgBox The current cursor position is %MouseX% %MouseY%.
 return
-^!x::  ; Control+Alt+Z hotkey.
+
+^!x::  ; Control+Alt+X hotkey.
 MouseGetPos, MouseX, MouseY
 PixelGetColor, color, %MouseX%, %MouseY%
 MsgBox The color at the current cursor position is %color%.
