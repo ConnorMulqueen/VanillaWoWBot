@@ -12,7 +12,7 @@ Loop {
 		if (color = "0x00C600" && stuck < 2) { ;Enemy Found
 			stuck += 1
 			PixelGetColor, range, 60, 612
-			While(range = "0x1A1AFF") {
+			While(range = "0x1A1AFF") { ;Continue walking if out of range
 				Random, rand, 19, 34
 				Send, {w down}
 				Sleep, rand
@@ -20,10 +20,10 @@ Loop {
 				PixelGetColor, range, 60, 612
 			}
 			PixelGetColor, color2, 205, 76
-			Send, {3 down}
+			Send, {3 down} ;Cast Frostbolt
 			Send, {3 up}
 			attacksSent = 0
-			while(color2 = "0x00A100") {
+			while(color2 = "0x00A100") { ;While Enemy is alive, cast Fireballs
 				Random, rand, 300, 1000
 				Send, {2 down}
 				Sleep, rand
@@ -40,7 +40,7 @@ Loop {
 			}
 			MouseMove, 408, 364
 			PixelGetColor, mana, 97, 86
-			if(mana != "0xA50000") {
+			if(mana != "0xA50000") { ;Drink water
 			Sleep, 50
 			Send, {7 down}
 			Sleep, 89
@@ -48,7 +48,7 @@ Loop {
 			Sleep, 18000
 			}
 			PixelGetColor, health, 123, 76
-			if (health != "0x00C600") {
+			if (health != "0x00C600") { ;Eat Food
 			Sleep, 50
 			Send, {8 down}
 			Sleep, 89
@@ -83,9 +83,3 @@ Loop {
 Escape::
 ExitApp
 Return
-
-^!z::  ; Control+Alt+Z hotkey.
-MouseGetPos, MouseX, MouseY
-PixelGetColor, color, %MouseX%, %MouseY%
-MsgBox The color at the current cursor position is %color%.
-return
